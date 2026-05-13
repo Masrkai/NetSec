@@ -28,5 +28,16 @@ this logic is very simple and other tools exist but these are the ones we are co
 
 so to read this data we need some kind of convertor, `tshark` a utility from the wireshark package should be able to deal with this right ?
 
+```bash
+
+# Batch analysis (recommended for your current CSV)
+python arp_detection.py --mode batch --csv-dir ./Captures/CSV
+
+# Streaming (for continuous monitoring)
+python arp_detection.py --mode stream --csv-dir ./Captures/CSV
+
+# Future: Real-time from Kafka
+python arp_detection.py --mode stream --kafka
+```
 
 what if we want to make a parameter to either read from that CSV or from live capture usign tshark how would we be able to implement that ?
