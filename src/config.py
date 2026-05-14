@@ -41,7 +41,7 @@ class ARPConfig:
         "mac_flipping": 20,
         "ip_flipping": 12,
         "unsolicited": 14,
-        "impersonation": 14,
+        "impersonation": 100,
         "conflict": 10,
         "garp": 4,
     })

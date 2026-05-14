@@ -1,0 +1,813 @@
+
+[m╭─ [22;1;34m~[22;39m    
+[m╰─ [22;1;36mmasrkai[22;39m@NixOS  [22;1;31m07:56[22;39m [22;1;32m➜[22;39m  cd /home/masrkai/Documents/College/Current/Big_data/Project
+
+[m╭─ [22;1;34mCurrent/Big_data/Project[22;39m  at [22;1;32m[22m [39m on [22;1;35m main[22;39m [22;1;31m!2?1[22;39m  via [33m v3.12.13[39m 
+[m╰─ [22;1;36mmasrkai[22;39m@NixOS  [22;1;31m07:56[22;39m [22;1;32m➜[22;39m  nix-shell
+[m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[m  uv   version: uv 0.9.30
+[m  Python:       Python 3.12.13
+[m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[m╭─ [22;1;34mCurrent/Big_data/Project[22;39m  at [22;1;32m[22m [39m on [22;1;35m main[22;39m [22;1;31m!2?1[22;39m  via [33m v3.12.7[39m via [22;1;31mimpure shell[34m NetSec[22;39m 
+[m╰─ [22;1;36mmasrkai[22;39m@NixOS  [22;1;31m07:56[22;39m [22;1;32m➜[22;39m  python src/main.py --mode stream --kafka
+[mWARNING: Using incubator modules: jdk.incubator.vector
+[mUsing Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+[m26/05/14 07:56:54 WARN Utils: Your hostname, NixOS, resolves to a loopback address: 127.0.0.2; using 192.168.55.82 instead (on interface wlan0)
+[m26/05/14 07:56:54 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+[mUsing Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+[mSetting default log level to "WARN".
+[mTo adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[m26/05/14 07:56:55 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[m============================================================
+[mARP ANOMALY DETECTION — STREAMING MODE (Stateless)
+[m============================================================
+[m[INFO] Kafka source: localhost:9092, topic: network-arp-raw
+[mTraceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/main.py", line 50, in <module>
+[m    main()
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/main.py", line 45, in main
+[m    queries = run_streaming_analysis(spark, config, args.csv_dir, args.kafka)
+[m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 31, in run_streaming_analysis
+[m    raw_stream = source.read_kafka_stream()
+[m                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/data_source.py", line 68, in read_kafka_stream
+[m    .load()
+[m     ^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/streaming/readwriter.py", line 307, in load
+[m    return self._df(self._jreader.load())
+[m                    ^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1362, in __call__
+[m    return_value = get_return_value(
+[m                   ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 269, in deco
+[m    raise converted from None
+[mpyspark.errors.exceptions.captured.AnalysisException: Failed to find data source: kafka. Please deploy the application as per the deployment section of Structured Streaming + Kafka Integration
+[m Guide.
+
+[m╭─ [22;1;34mCurrent/Big_data/Project[22;39m  at [22;1;32m[22m [39m on [22;1;35m main[22;39m [22;1;31m!2?1[22;39m  via [33m v3.12.7[39m via [22;1;31mimpure shell[34m NetSec[22;39m  took [33m4s
+[m╰─ [22;1;36mmasrkai[22;39m@NixOS  [22;1;31m07:56[22;39m [22;1;31m➜[22;39m  python src/main.py --mode stream
+[mWARNING: Using incubator modules: jdk.incubator.vector
+[mUsing Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+[m26/05/14 07:57:12 WARN Utils: Your hostname, NixOS, resolves to a loopback address: 127.0.0.2; using 192.168.55.82 instead (on interface wlan0)
+[m26/05/14 07:57:12 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+[mUsing Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+[mSetting default log level to "WARN".
+[mTo adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[m26/05/14 07:57:13 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[m============================================================
+[mARP ANOMALY DETECTION — STREAMING MODE (Stateless)
+[m============================================================
+[m[INFO] Streaming CSV source: file:///home/masrkai/Documents/College/Current/Big_data/Project/Captures/CSV
+[m26/05/14 07:57:16 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[m26/05/14 07:57:16 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[m26/05/14 07:57:16 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[m26/05/14 07:57:17 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[m26/05/14 07:57:17 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[m26/05/14 07:57:18 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[m26/05/14 07:57:18 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[m26/05/14 07:57:18 ERROR MicroBatchExecution: Query Conflict [id = ac057cf6-8ba3-4fd5-beb3-d0d69244fa09, runId = 2395a6f9-6489-4f46-a0ca-404ce98bab14] terminated with error
+[morg.apache.spark.SparkException: [INTERNAL_ERROR] The Spark SQL phase planning failed with an internal error. You hit a bug in Spark or the Spark plugins you use. Please, report this bug to th
+[me corresponding communities or vendors, and provide the full stack trace. SQLSTATE: XX000
+[m	at org.apache.spark.SparkException$.internalError(SparkException.scala:107)
+[m	at org.apache.spark.sql.execution.QueryExecution$.toInternalError(QueryExecution.scala:706)
+[m	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:719)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazySparkPlan$1(QueryExecution.scala:270)
+[m	at scala.util.Try$.apply(Try.scala:217)
+[m	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+[m	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+[m	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+[m	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+[m	at org.apache.spark.sql.execution.QueryExecution.sparkPlan(QueryExecution.scala:274)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$2(QueryExecution.scala:285)
+[m	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+[m	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$1(QueryExecution.scala:285)
+[m	at scala.util.Try$.apply(Try.scala:217)
+[m	at org.apache.spark.util.Utils$.getTryWithCallerStacktrace(Utils.scala:1453)
+[m	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+[m	at org.apache.spark.sql.execution.QueryExecution.executedPlan(QueryExecution.scala:295)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$17(MicroBatchExecution.scala:1041)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runBatch(MicroBatchExecution.scala:1025)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$executeOneBatch$2(MicroBatchExecution.scala:516)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.executeOneBatch(MicroBatchExecution.scala:481)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1$adapted(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch(TriggerExecutor.scala:40)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch$(TriggerExecutor.scala:38)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.runOneBatch(TriggerExecutor.scala:71)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.execute(TriggerExecutor.scala:83)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runActivatedStream(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.$anonfun$runStream$1(StreamExecution.scala:347)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.org$apache$spark$sql$execution$streaming$runtime$StreamExecution$$runStream(StreamExecution.scala:307)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution$$anon$1.run(StreamExecution.scala:230)
+[m	Suppressed: org.apache.spark.util.Utils$OriginalTryStackTraceException: Full stacktrace of original doTryWithCallerStacktrace caller
+[m		at org.apache.spark.SparkException$.internalError(SparkException.scala:107)
+[m		at org.apache.spark.sql.execution.QueryExecution$.toInternalError(QueryExecution.scala:706)
+[m		at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:719)
+[m		at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+[m		at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m		at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+[m		at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazySparkPlan$1(QueryExecution.scala:270)
+[m		at scala.util.Try$.apply(Try.scala:217)
+[m		at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+[m		at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+[m		at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+[m		at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+[m		at org.apache.spark.sql.execution.QueryExecution.sparkPlan(QueryExecution.scala:274)
+[m		at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$2(QueryExecution.scala:285)
+[m		at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+[m		at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+[m		at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+[m		at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+[m		at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m		at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+[m		at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$1(QueryExecution.scala:285)
+[m		at scala.util.Try$.apply(Try.scala:217)
+[m		at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+[m		at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+[m		at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+[m		... 21 more
+[mCaused by: java.lang.NullPointerException: Cannot invoke "org.apache.spark.sql.classic.SparkSession.sparkContext()" because the return value of "org.apache.spark.sql.execution.SparkPlan.sessio
+[mn()" is null
+[m	at org.apache.spark.sql.execution.SparkPlan.sparkContext(SparkPlan.scala:68)
+[m	at org.apache.spark.sql.execution.streaming.operators.stateful.EventTimeWatermarkExec.<init>(EventTimeWatermarkExec.scala:103)
+[m	at org.apache.spark.sql.execution.SparkStrategies$EventTimeWatermarkStrategy$.apply(SparkStrategies.scala:432)
+[m	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$1(QueryPlanner.scala:63)
+[m	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+[m	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+[m	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:611)
+[m	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+[m	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+[m	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+[m	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+[m	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+[m	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+[m	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+[m	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+[m	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+[m	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+[m	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+[m	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+[m	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+[m	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+[m	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+[m	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+[m	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+[m	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+[m	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+[m	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+[m	at org.apache.spark.sql.execution.QueryExecution$.createSparkPlan(QueryExecution.scala:656)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazySparkPlan$2(QueryExecution.scala:270)
+[m	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+[m	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazySparkPlan$1(QueryExecution.scala:270)
+[m	at scala.util.Try$.apply(Try.scala:217)
+[m	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+[m	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+[m	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+[m	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+[m	at org.apache.spark.sql.execution.QueryExecution.sparkPlan(QueryExecution.scala:274)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$2(QueryExecution.scala:285)
+[m	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+[m	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+[m	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$1(QueryExecution.scala:285)
+[m	at scala.util.Try$.apply(Try.scala:217)
+[m	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+[m	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+[m	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+[m	... 21 more
+[m26/05/14 07:57:18 ERROR MicroBatchExecution: Query Flood [id = 59bbcdad-42ee-476a-b847-6dca32b4cff6, runId = 1a41cf14-ed76-44ee-9477-278193a2cd1b] terminated with error
+[morg.apache.spark.sql.execution.streaming.sources.ForeachBatchUserFuncException: [FOREACH_BATCH_USER_FUNCTION_ERROR] An error occurred in the user provided function in foreach batch sink. Reaso
+[mn: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 644, in _call_proxy
+[m    return_value = getattr(self.pool[obj_id], method)(*params)
+[m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 165, in call
+[m    raise e
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 162, in call
+[m    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 43, in handler
+[m    if batch_df.count() == 0:
+[m       ^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/classic/dataframe.py", line 439, in count
+[m    return int(self._jdf.count())
+[m               ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1362, in __call__
+[m    return_value = get_return_value(
+[m                   ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 263, in deco
+[m    return f(*a, **kw)
+[m           ^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/protocol.py", line 327, in get_return_value
+[m    raise Py4JJavaError(
+[mpy4j.protocol.Py4JJavaError: An error occurred while calling o188.count.
+[m: org.apache.spark.SparkException: Job 2 cancelled because SparkContext was shut down
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1(DAGScheduler.scala:1309)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1$adapted(DAGScheduler.scala:1307)
+[m	at scala.collection.mutable.HashSet$Node.foreach(HashSet.scala:450)
+[m	at scala.collection.mutable.HashSet.foreach(HashSet.scala:376)
+[m	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:1307)
+[m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:3424)
+[m	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:85)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$stop$3(DAGScheduler.scala:3307)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:3307)
+[m	at org.apache.spark.SparkContext.$anonfun$stop$12(SparkContext.scala:2357)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2357)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2308)
+[m	at org.apache.spark.api.java.JavaSparkContext.stop(JavaSparkContext.scala:552)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+[m	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+[m	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+[m	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[m	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[m	at py4j.Gateway.invoke(Gateway.java:282)
+[m	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[m	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[m	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+[m	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+[m	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[m SQLSTATE: 39000
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:60)
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.addBatch(ForeachBatchSink.scala:49)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$19(MicroBatchExecution.scala:1074)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:177)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+[m	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$18(MicroBatchExecution.scala:1065)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runBatch(MicroBatchExecution.scala:1065)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$executeOneBatch$2(MicroBatchExecution.scala:516)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.executeOneBatch(MicroBatchExecution.scala:481)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1$adapted(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch(TriggerExecutor.scala:40)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch$(TriggerExecutor.scala:38)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.runOneBatch(TriggerExecutor.scala:71)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.execute(TriggerExecutor.scala:83)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runActivatedStream(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.$anonfun$runStream$1(StreamExecution.scala:347)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.org$apache$spark$sql$execution$streaming$runtime$StreamExecution$$runStream(StreamExecution.scala:307)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution$$anon$1.run(StreamExecution.scala:230)
+[mCaused by: py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 644, in _call_proxy
+[m    return_value = getattr(self.pool[obj_id], method)(*params)
+[m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 165, in call
+[m    raise e
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 162, in call
+[m    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 43, in handler
+[m    if batch_df.count() == 0:
+[m       ^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/classic/dataframe.py", line 439, in count
+[m    return int(self._jdf.count())
+[m               ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1362, in __call__
+[m    return_value = get_return_value(
+[m                   ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 263, in deco
+[m    return f(*a, **kw)
+[m           ^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/protocol.py", line 327, in get_return_value
+[m    raise Py4JJavaError(
+[mpy4j.protocol.Py4JJavaError: An error occurred while calling o188.count.
+[m: org.apache.spark.SparkException: Job 2 cancelled because SparkContext was shut down
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1(DAGScheduler.scala:1309)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1$adapted(DAGScheduler.scala:1307)
+[m	at scala.collection.mutable.HashSet$Node.foreach(HashSet.scala:450)
+[m	at scala.collection.mutable.HashSet.foreach(HashSet.scala:376)
+[m	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:1307)
+[m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:3424)
+[m	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:85)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$stop$3(DAGScheduler.scala:3307)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:3307)
+[m	at org.apache.spark.SparkContext.$anonfun$stop$12(SparkContext.scala:2357)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2357)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2308)
+[m	at org.apache.spark.api.java.JavaSparkContext.stop(JavaSparkContext.scala:552)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+[m	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+[m	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+[m	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[m	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[m	at py4j.Gateway.invoke(Gateway.java:282)
+[m	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[m	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[m	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+[m	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+[m	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+
+[m	at py4j.Protocol.getReturnValue(Protocol.java:476)
+[m	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+[m	at jdk.proxy3/jdk.proxy3.$Proxy42.call(Unknown Source)
+[m	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1(ForeachBatchSink.scala:87)
+[m	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1$adapted(ForeachBatchSink.scala:87)
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:56)
+[m	... 34 more
+[m26/05/14 07:57:18 ERROR MicroBatchExecution: Query Scanning [id = a9f82920-ea6c-4714-bdde-ba5189dc05cc, runId = 35c6f2da-63e2-4128-805f-fff97d5f6172] terminated with error
+[morg.apache.spark.sql.execution.streaming.sources.ForeachBatchUserFuncException: [FOREACH_BATCH_USER_FUNCTION_ERROR] An error occurred in the user provided function in foreach batch sink. Reaso
+[mn: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 644, in _call_proxy
+[m    return_value = getattr(self.pool[obj_id], method)(*params)
+[m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 165, in call
+[m    raise e
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 162, in call
+[m    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 43, in handler
+[m    if batch_df.count() == 0:
+[m       ^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/classic/dataframe.py", line 439, in count
+[m    return int(self._jdf.count())
+[m               ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1362, in __call__
+[m    return_value = get_return_value(
+[m                   ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 263, in deco
+[m    return f(*a, **kw)
+[m           ^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/protocol.py", line 327, in get_return_value
+[m    raise Py4JJavaError(
+[mpy4j.protocol.Py4JJavaError: An error occurred while calling o187.count.
+[m: org.apache.spark.SparkException: Job 0 cancelled because SparkContext was shut down
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1(DAGScheduler.scala:1309)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1$adapted(DAGScheduler.scala:1307)
+[m	at scala.collection.mutable.HashSet$Node.foreach(HashSet.scala:450)
+[m	at scala.collection.mutable.HashSet.foreach(HashSet.scala:376)
+[m	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:1307)
+[m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:3424)
+[m	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:85)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$stop$3(DAGScheduler.scala:3307)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:3307)
+[m	at org.apache.spark.SparkContext.$anonfun$stop$12(SparkContext.scala:2357)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2357)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2308)
+[m	at org.apache.spark.api.java.JavaSparkContext.stop(JavaSparkContext.scala:552)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+[m	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+[m	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+[m	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[m	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[m	at py4j.Gateway.invoke(Gateway.java:282)
+[m	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[m	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[m	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+[m	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+[m	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[m SQLSTATE: 39000
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:60)
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.addBatch(ForeachBatchSink.scala:49)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$19(MicroBatchExecution.scala:1074)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:177)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+[m	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$18(MicroBatchExecution.scala:1065)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runBatch(MicroBatchExecution.scala:1065)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$executeOneBatch$2(MicroBatchExecution.scala:516)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.executeOneBatch(MicroBatchExecution.scala:481)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1$adapted(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch(TriggerExecutor.scala:40)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch$(TriggerExecutor.scala:38)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.runOneBatch(TriggerExecutor.scala:71)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.execute(TriggerExecutor.scala:83)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runActivatedStream(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.$anonfun$runStream$1(StreamExecution.scala:347)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.org$apache$spark$sql$execution$streaming$runtime$StreamExecution$$runStream(StreamExecution.scala:307)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution$$anon$1.run(StreamExecution.scala:230)
+[mCaused by: py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 644, in _call_proxy
+[m    return_value = getattr(self.pool[obj_id], method)(*params)
+[m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 165, in call
+[m    raise e
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 162, in call
+[m    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 43, in handler
+[m    if batch_df.count() == 0:
+[m       ^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/classic/dataframe.py", line 439, in count
+[m    return int(self._jdf.count())
+[m               ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1362, in __call__
+[m    return_value = get_return_value(
+[m                   ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 263, in deco
+[m    return f(*a, **kw)
+[m           ^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/protocol.py", line 327, in get_return_value
+[m    raise Py4JJavaError(
+[mpy4j.protocol.Py4JJavaError: An error occurred while calling o187.count.
+[m: org.apache.spark.SparkException: Job 0 cancelled because SparkContext was shut down
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1(DAGScheduler.scala:1309)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1$adapted(DAGScheduler.scala:1307)
+[m	at scala.collection.mutable.HashSet$Node.foreach(HashSet.scala:450)
+[m	at scala.collection.mutable.HashSet.foreach(HashSet.scala:376)
+[m	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:1307)
+[m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:3424)
+[m	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:85)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$stop$3(DAGScheduler.scala:3307)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:3307)
+[m	at org.apache.spark.SparkContext.$anonfun$stop$12(SparkContext.scala:2357)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2357)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2308)
+[m	at org.apache.spark.api.java.JavaSparkContext.stop(JavaSparkContext.scala:552)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+[m	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+[m	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+[m	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[m	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[m	at py4j.Gateway.invoke(Gateway.java:282)
+[m	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[m	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[m	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+[m	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+[m	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+
+[m	at py4j.Protocol.getReturnValue(Protocol.java:476)
+[m	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+[m	at jdk.proxy3/jdk.proxy3.$Proxy42.call(Unknown Source)
+[m	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1(ForeachBatchSink.scala:87)
+[m	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1$adapted(ForeachBatchSink.scala:87)
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:56)
+[m	... 34 more
+[m26/05/14 07:57:18 ERROR MicroBatchExecution: Query GARP [id = 8c27a395-d2d3-46f0-b35d-ad0f5cfefcf1, runId = fa92b880-61c5-420f-bd32-6569154024bf] terminated with error
+[morg.apache.spark.sql.execution.streaming.sources.ForeachBatchUserFuncException: [FOREACH_BATCH_USER_FUNCTION_ERROR] An error occurred in the user provided function in foreach batch sink. Reaso
+[mn: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 644, in _call_proxy
+[m    return_value = getattr(self.pool[obj_id], method)(*params)
+[m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 165, in call
+[m    raise e
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 162, in call
+[m    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 43, in handler
+[m    if batch_df.count() == 0:
+[m       ^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/classic/dataframe.py", line 439, in count
+[m    return int(self._jdf.count())
+[m               ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1362, in __call__
+[m    return_value = get_return_value(
+[m                   ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 263, in deco
+[m    return f(*a, **kw)
+[m           ^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/protocol.py", line 327, in get_return_value
+[m    raise Py4JJavaError(
+[mpy4j.protocol.Py4JJavaError: An error occurred while calling o189.count.
+[m: org.apache.spark.SparkException: Job 1 cancelled because SparkContext was shut down
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1(DAGScheduler.scala:1309)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1$adapted(DAGScheduler.scala:1307)
+[m	at scala.collection.mutable.HashSet$Node.foreach(HashSet.scala:450)
+[m	at scala.collection.mutable.HashSet.foreach(HashSet.scala:376)
+[m	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:1307)
+[m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:3424)
+[m	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:85)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$stop$3(DAGScheduler.scala:3307)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:3307)
+[m	at org.apache.spark.SparkContext.$anonfun$stop$12(SparkContext.scala:2357)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2357)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2308)
+[m	at org.apache.spark.api.java.JavaSparkContext.stop(JavaSparkContext.scala:552)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+[m	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+[m	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+[m	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[m	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[m	at py4j.Gateway.invoke(Gateway.java:282)
+[m	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[m	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[m	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+[m	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+[m	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[m SQLSTATE: 39000
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:60)
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.addBatch(ForeachBatchSink.scala:49)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$19(MicroBatchExecution.scala:1074)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:177)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+[m	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$18(MicroBatchExecution.scala:1065)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runBatch(MicroBatchExecution.scala:1065)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$executeOneBatch$2(MicroBatchExecution.scala:516)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.executeOneBatch(MicroBatchExecution.scala:481)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1$adapted(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch(TriggerExecutor.scala:40)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch$(TriggerExecutor.scala:38)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.runOneBatch(TriggerExecutor.scala:71)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.execute(TriggerExecutor.scala:83)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runActivatedStream(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.$anonfun$runStream$1(StreamExecution.scala:347)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.org$apache$spark$sql$execution$streaming$runtime$StreamExecution$$runStream(StreamExecution.scala:307)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution$$anon$1.run(StreamExecution.scala:230)
+[mCaused by: py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 644, in _call_proxy
+[m    return_value = getattr(self.pool[obj_id], method)(*params)
+[m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 165, in call
+[m    raise e
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 162, in call
+[m    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 43, in handler
+[m    if batch_df.count() == 0:
+[m       ^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/classic/dataframe.py", line 439, in count
+[m    return int(self._jdf.count())
+[m               ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1362, in __call__
+[m    return_value = get_return_value(
+[m                   ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 263, in deco
+[m    return f(*a, **kw)
+[m           ^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/protocol.py", line 327, in get_return_value
+[m    raise Py4JJavaError(
+[mpy4j.protocol.Py4JJavaError: An error occurred while calling o189.count.
+[m: org.apache.spark.SparkException: Job 1 cancelled because SparkContext was shut down
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1(DAGScheduler.scala:1309)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1$adapted(DAGScheduler.scala:1307)
+[m	at scala.collection.mutable.HashSet$Node.foreach(HashSet.scala:450)
+[m	at scala.collection.mutable.HashSet.foreach(HashSet.scala:376)
+[m	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:1307)
+[m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:3424)
+[m	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:85)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$stop$3(DAGScheduler.scala:3307)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:3307)
+[m	at org.apache.spark.SparkContext.$anonfun$stop$12(SparkContext.scala:2357)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2357)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2308)
+[m	at org.apache.spark.api.java.JavaSparkContext.stop(JavaSparkContext.scala:552)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+[m	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+[m	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+[m	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[m	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[m	at py4j.Gateway.invoke(Gateway.java:282)
+[m	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[m	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[m	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+[m	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+[m	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+
+[m	at py4j.Protocol.getReturnValue(Protocol.java:476)
+[m	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+[m	at jdk.proxy3/jdk.proxy3.$Proxy42.call(Unknown Source)
+[m	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1(ForeachBatchSink.scala:87)
+[m	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1$adapted(ForeachBatchSink.scala:87)
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:56)
+[m	... 34 more
+[m26/05/14 07:57:18 ERROR MicroBatchExecution: Query Impersonation [id = fb5e43a4-10cc-415a-99dd-1c467b5ef038, runId = 30df2c95-979b-4ce5-a581-0efe68ec0ac1] terminated with error
+[morg.apache.spark.sql.execution.streaming.sources.ForeachBatchUserFuncException: [FOREACH_BATCH_USER_FUNCTION_ERROR] An error occurred in the user provided function in foreach batch sink. Reaso
+[mn: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 644, in _call_proxy
+[m    return_value = getattr(self.pool[obj_id], method)(*params)
+[m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 165, in call
+[m    raise e
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 162, in call
+[m    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 43, in handler
+[m    if batch_df.count() == 0:
+[m       ^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/classic/dataframe.py", line 439, in count
+[m    return int(self._jdf.count())
+[m               ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1362, in __call__
+[m    return_value = get_return_value(
+[m                   ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 263, in deco
+[m    return f(*a, **kw)
+[m           ^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/protocol.py", line 327, in get_return_value
+[m    raise Py4JJavaError(
+[mpy4j.protocol.Py4JJavaError: An error occurred while calling o203.count.
+[m: org.apache.spark.SparkException: Job 3 cancelled because SparkContext was shut down
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1(DAGScheduler.scala:1309)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1$adapted(DAGScheduler.scala:1307)
+[m	at scala.collection.mutable.HashSet$Node.foreach(HashSet.scala:450)
+[m	at scala.collection.mutable.HashSet.foreach(HashSet.scala:376)
+[m	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:1307)
+[m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:3424)
+[m	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:85)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$stop$3(DAGScheduler.scala:3307)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:3307)
+[m	at org.apache.spark.SparkContext.$anonfun$stop$12(SparkContext.scala:2357)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2357)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2308)
+[m	at org.apache.spark.api.java.JavaSparkContext.stop(JavaSparkContext.scala:552)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+[m	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+[m	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+[m	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[m	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[m	at py4j.Gateway.invoke(Gateway.java:282)
+[m	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[m	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[m	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+[m	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+[m	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[m SQLSTATE: 39000
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:60)
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.addBatch(ForeachBatchSink.scala:49)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$19(MicroBatchExecution.scala:1074)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:177)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+[m	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+[m	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+[m	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+[m	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runBatch$18(MicroBatchExecution.scala:1065)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runBatch(MicroBatchExecution.scala:1065)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$executeOneBatch$2(MicroBatchExecution.scala:516)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProgressContext.reportTimeTaken(ProgressReporter.scala:200)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.executeOneBatch(MicroBatchExecution.scala:481)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.$anonfun$runActivatedStream$1$adapted(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch(TriggerExecutor.scala:40)
+[m	at org.apache.spark.sql.execution.streaming.runtime.TriggerExecutor.runOneBatch$(TriggerExecutor.scala:38)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.runOneBatch(TriggerExecutor.scala:71)
+[m	at org.apache.spark.sql.execution.streaming.runtime.ProcessingTimeExecutor.execute(TriggerExecutor.scala:83)
+[m	at org.apache.spark.sql.execution.streaming.runtime.MicroBatchExecution.runActivatedStream(MicroBatchExecution.scala:461)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.$anonfun$runStream$1(StreamExecution.scala:347)
+[m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+[m	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution.org$apache$spark$sql$execution$streaming$runtime$StreamExecution$$runStream(StreamExecution.scala:307)
+[m	at org.apache.spark.sql.execution.streaming.runtime.StreamExecution$$anon$1.run(StreamExecution.scala:230)
+[mCaused by: py4j.Py4JException: An exception was raised by the Python Proxy. Return Message: Traceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 644, in _call_proxy
+[m    return_value = getattr(self.pool[obj_id], method)(*params)
+[m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 165, in call
+[m    raise e
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/utils.py", line 162, in call
+[m    self.func(DataFrame(jdf, wrapped_session_jdf), batch_id)
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 43, in handler
+[m    if batch_df.count() == 0:
+[m       ^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/sql/classic/dataframe.py", line 439, in count
+[m    return int(self._jdf.count())
+[m               ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1362, in __call__
+[m    return_value = get_return_value(
+[m                   ^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/pyspark/errors/exceptions/captured.py", line 263, in deco
+[m    return f(*a, **kw)
+[m           ^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/.venv/lib/python3.12/site-packages/py4j/protocol.py", line 327, in get_return_value
+[m    raise Py4JJavaError(
+[mpy4j.protocol.Py4JJavaError: An error occurred while calling o203.count.
+[m: org.apache.spark.SparkException: Job 3 cancelled because SparkContext was shut down
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1(DAGScheduler.scala:1309)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$cleanUpAfterSchedulerStop$1$adapted(DAGScheduler.scala:1307)
+[m	at scala.collection.mutable.HashSet$Node.foreach(HashSet.scala:450)
+[m	at scala.collection.mutable.HashSet.foreach(HashSet.scala:376)
+[m	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:1307)
+[m	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:3424)
+[m	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:85)
+[m	at org.apache.spark.scheduler.DAGScheduler.$anonfun$stop$3(DAGScheduler.scala:3307)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:3307)
+[m	at org.apache.spark.SparkContext.$anonfun$stop$12(SparkContext.scala:2357)
+[m	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1314)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2357)
+[m	at org.apache.spark.SparkContext.stop(SparkContext.scala:2308)
+[m	at org.apache.spark.api.java.JavaSparkContext.stop(JavaSparkContext.scala:552)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[m	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+[m	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+[m	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+[m	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[m	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[m	at py4j.Gateway.invoke(Gateway.java:282)
+[m	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[m[m	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[m	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+[m	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+[m	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+
+[m	at py4j.Protocol.getReturnValue(Protocol.java:476)
+[m	at py4j.reflection.PythonProxyHandler.invoke(PythonProxyHandler.java:108)
+[m	at jdk.proxy3/jdk.proxy3.$Proxy42.call(Unknown Source)
+[m	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1(ForeachBatchSink.scala:87)
+[m	at org.apache.spark.sql.execution.streaming.sources.PythonForeachBatchHelper$.$anonfun$callForeachBatch$1$adapted(ForeachBatchSink.scala:87)
+[m	at org.apache.spark.sql.execution.streaming.sources.ForeachBatchSink.callBatchWriter(ForeachBatchSink.scala:56)
+[m	... 34 more
+[mTraceback (most recent call last):
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/main.py", line 50, in <module>
+[m    main()
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/main.py", line 45, in main
+[m    queries = run_streaming_analysis(spark, config, args.csv_dir, args.kafka)
+[m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[m  File "/home/masrkai/Documents/College/Current/Big_data/Project/src/stream_runner.py", line 95, in run_streaming_analysis
+[m    .groupBy(window(col("event_ts"), "1 second"))
+[m             ^^^^^^
+[mNameError: name 'window' is not defined
+
+[m╭─ [22;1;34mCurrent/Big_data/Project[22;39m  at [22;1;32m[22m [39m on [22;1;35m main[22;39m [22;1;31m!2?1[22;39m  via [33m v3.12.7[39m via [22;1;31mimpure shell[34m NetSec[22;39m  took [33m8s
+[m╰─ [22;1;36mmasrkai[22;39m@NixOS  [22;1;31m07:57[22;39m [22;1;31m➜[22;39m  

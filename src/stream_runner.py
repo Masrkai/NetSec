@@ -8,7 +8,6 @@ from config import ARPConfig
 from data_source import ARPDataSource
 from enrichment import enrich_arp_data
 from detector_registry import STANDARD_DETECTORS, SPOOFING
-from output import OutputManager
 
 
 def run_streaming_analysis(
@@ -17,7 +16,7 @@ def run_streaming_analysis(
     csv_dir: Optional[str] = None,
     use_kafka: bool = False,
 ) -> List:
-    """Run all detectors in streaming mode."""
+    """Run all detectors in streaming mode using foreachBatch."""
 
     print("=" * 60)
     print("ARP ANOMALY DETECTION — STREAMING MODE (Stateless)")
@@ -33,23 +32,66 @@ def run_streaming_analysis(
         raw_stream = source.read_csv_stream(csv_dir)
 
     enriched = enrich_arp_data(raw_stream, config)
-
-    output = OutputManager(spark, config)
     queries = []
 
     print("[INFO] Starting detector streams...")
 
-    for spec in STANDARD_DETECTORS:
-        df = spec.fn(enriched, config)
-        queries.append(output.console_sink(df, spec.name, spec.output_mode))
+    # ------------------------------------------------------------------
+    # STANDARD DETECTORS
+    # ------------------------------------------------------------------
+    def make_handler(spec):
+        def handler(batch_df, batch_id):
+            if batch_df.rdd.isEmpty():
+                return
+            try:
+                result = spec.fn(batch_df, config)
+                cnt = result.count()
+                if cnt > 0:
+                    print(f"\n🔴 [{spec.name}] {cnt} events in micro-batch {batch_id}")
+                    result.show(truncate=False)
+                else:
+                    print(f"🟢 [{spec.name}] Clean in micro-batch {batch_id}")
+            except Exception as e:
+                print(f"⚠️  [{spec.name}] Handler error: {e}")
+        return handler
 
-    reply_mismatch, mac_flipping, ip_flipping = SPOOFING.fn(enriched, config)
-    for df, sub_name, mode in zip(
-        (reply_mismatch, mac_flipping, ip_flipping),
-        SPOOFING.sub_names,
-        SPOOFING.output_modes,
-    ):
-        queries.append(output.console_sink(df, f"Spoof-{sub_name.replace(' ', '')}", mode))
+    for spec in STANDARD_DETECTORS:
+        q = (
+            enriched.writeStream
+            .foreachBatch(make_handler(spec))
+            .outputMode("append")
+            .queryName(spec.name)
+            .start()
+        )
+        queries.append(q)
+
+    # ------------------------------------------------------------------
+    # SPOOFING (3 heuristics in one handler)
+    # ------------------------------------------------------------------
+    def spoofing_handler(batch_df, batch_id):
+        if batch_df.rdd.isEmpty():
+            return
+        try:
+            reply_mismatch, mac_flipping, ip_flipping = SPOOFING.fn(batch_df, config)
+            for df, sub_name in zip(
+                (reply_mismatch, mac_flipping, ip_flipping),
+                SPOOFING.sub_names,
+            ):
+                cnt = df.count()
+                if cnt > 0:
+                    print(f"\n🔴 [Spoof-{sub_name}] {cnt} events")
+                    df.show(truncate=False)
+        except Exception as e:
+            print(f"⚠️  [Spoofing] Handler error: {e}")
+
+    q = (
+        enriched.writeStream
+        .foreachBatch(spoofing_handler)
+        .outputMode("append")
+        .queryName("Spoofing")
+        .start()
+    )
+    queries.append(q)
 
     print(f"[INFO] Started {len(queries)} streaming queries")
     print("[INFO] Waiting for data... Press Ctrl+C to stop")
