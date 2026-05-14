@@ -37,112 +37,14 @@ from detectors import (
 # =============================================================================
 # DARK THEME CSS
 # =============================================================================
-
-CUSTOM_CSS = """
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-body, .gradio-container {
-    font-family: 'Inter', sans-serif !important;
-    background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%) !important;
-    color: #e2e8f0 !important;
-}
-
-/* Metric cards */
-.metric-card {
-    background: rgba(15, 23, 42, 0.6) !important;
-    backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(56, 189, 248, 0.15) !important;
-    border-radius: 16px !important;
-    padding: 24px 16px !important;
-    text-align: center !important;
-    box-shadow: 0 8px 32px rgba(2, 8, 20, 0.4) !important;
-    transition: all 0.3s ease !important;
-}
-.metric-card:hover {
-    border-color: rgba(56, 189, 248, 0.4) !important;
-    transform: translateY(-2px) !important;
-}
-.metric-label {
-    font-size: 0.75rem !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
-    color: #94a3b8 !important;
-    margin-bottom: 8px !important;
-}
-.metric-value {
-    font-size: 2.25rem !important;
-    font-weight: 700 !important;
-    line-height: 1 !important;
-}
-
-/* Alert cards */
-.alert-card {
-    background: rgba(244, 63, 94, 0.08) !important;
-    border-left: 3px solid #f43f5e !important;
-    border-radius: 8px !important;
-    padding: 12px 16px !important;
-}
-.clean-card {
-    background: rgba(16, 185, 129, 0.08) !important;
-    border-left: 3px solid #10b981 !important;
-    border-radius: 8px !important;
-    padding: 12px 16px !important;
-}
-
-/* Tab styling */
-.tab-nav {
-    background: rgba(30, 41, 59, 0.5) !important;
-    border-radius: 12px !important;
-    padding: 6px !important;
-    border: 1px solid rgba(148, 163, 184, 0.1) !important;
-}
-.tab-nav button {
-    color: #64748b !important;
-    font-weight: 500 !important;
-    border-radius: 8px !important;
-    padding: 8px 16px !important;
-}
-.tab-nav button.selected {
-    color: #38bdf8 !important;
-    background: rgba(56, 189, 248, 0.12) !important;
-}
-
-/* Upload box */
-.upload-box {
-    border: 2px dashed rgba(56, 189, 248, 0.3) !important;
-    border-radius: 16px !important;
-    background: rgba(15, 23, 42, 0.4) !important;
-}
-.upload-box:hover {
-    border-color: rgba(56, 189, 248, 0.6) !important;
-    background: rgba(15, 23, 42, 0.6) !important;
-}
-
-/* Tables */
-table {
-    border-collapse: separate !important;
-    border-spacing: 0 !important;
-}
-th {
-    background: rgba(30, 41, 59, 0.8) !important;
-    color: #38bdf8 !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    font-size: 0.7rem !important;
-    letter-spacing: 0.05em !important;
-}
-td {
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1) !important;
-}
-tr:hover td {
-    background: rgba(56, 189, 248, 0.05) !important;
-}
-"""
+_CSS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles.css")
+with open(_CSS_PATH, "r", encoding="utf-8") as f:
+    CUSTOM_CSS = f.read()
 
 # =============================================================================
 # SPARK PROCESSING
 # =============================================================================
+
 
 def process_arp_capture(file_path: str) -> Tuple[Optional[Dict], Optional[str]]:
     """Run the full PySpark pipeline and return serializable results."""
@@ -176,15 +78,12 @@ def process_arp_capture(file_path: str) -> Tuple[Optional[Dict], Optional[str]]:
         total_garp = enriched.filter(col("is_gratuitous")).count()
 
         # ---- Temporal data ---------------------------------------------------
-        timeline_df = (
-            enriched.select(
-                date_format(col("event_ts"), "yyyy-MM-dd HH:mm:ss").alias("second"),
-                col("is_request").cast("int"),
-                col("is_reply").cast("int"),
-                col("is_gratuitous").cast("int"),
-            )
-            .toPandas()
-        )
+        timeline_df = enriched.select(
+            date_format(col("event_ts"), "yyyy-MM-dd HH:mm:ss").alias("second"),
+            col("is_request").cast("int"),
+            col("is_reply").cast("int"),
+            col("is_gratuitous").cast("int"),
+        ).toPandas()
 
         # ---- Top talkers -----------------------------------------------------
         top_talkers_df = (
@@ -206,7 +105,9 @@ def process_arp_capture(file_path: str) -> Tuple[Optional[Dict], Optional[str]]:
         # ---- Run all detectors -----------------------------------------------
         scanning = detect_arp_scanning(enriched, config).toPandas()
         garp = detect_garp_activity(enriched, config).toPandas()
-        reply_mismatch, mac_flipping, ip_flipping = detect_arp_spoofing(enriched, config)
+        reply_mismatch, mac_flipping, ip_flipping = detect_arp_spoofing(
+            enriched, config
+        )
         reply_mismatch = reply_mismatch.toPandas()
         mac_flipping = mac_flipping.toPandas()
         ip_flipping = ip_flipping.toPandas()
@@ -249,6 +150,7 @@ def process_arp_capture(file_path: str) -> Tuple[Optional[Dict], Optional[str]]:
 # =============================================================================
 # PLOTLY CHART BUILDERS (all dark-themed)
 # =============================================================================
+
 
 def _dark_layout(fig: go.Figure, title: str, height: int = 320) -> go.Figure:
     fig.update_layout(
@@ -416,7 +318,14 @@ def build_opcode_pie(df: pd.DataFrame) -> go.Figure:
     fig.update_layout(
         showlegend=False,
         annotations=[
-            dict(text="ARP", x=0.5, y=0.5, font_size=18, showarrow=False, font_color="#94a3b8")
+            dict(
+                text="ARP",
+                x=0.5,
+                y=0.5,
+                font_size=18,
+                showarrow=False,
+                font_color="#94a3b8",
+            )
         ],
         margin=dict(l=20, r=20, t=40, b=20),
         height=300,
@@ -542,10 +451,10 @@ def build_spoofing_summary(data: Dict) -> go.Figure:
 # GRADIO UI
 # =============================================================================
 
+
 def build_interface() -> gr.Blocks:
     # FIX: Gradio 6.0 — move theme/css to launch(), not Blocks()
     with gr.Blocks(title="NetSec") as demo:
-
         # Header
         gr.HTML("""
         <div style="text-align:center; padding: 24px 0 8px;">
@@ -658,7 +567,9 @@ def build_interface() -> gr.Blocks:
 
         def on_analyze(file_obj):
             if file_obj is None:
-                return {status_msg: gr.update(value="Please upload a CSV.", visible=True)}
+                return {
+                    status_msg: gr.update(value="Please upload a CSV.", visible=True)
+                }
 
             path = file_obj.name if hasattr(file_obj, "name") else str(file_obj)
             data, err = process_arp_capture(path)
