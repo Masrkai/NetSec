@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import Dict
 
 @dataclass
 class ARPConfig:
@@ -28,6 +29,19 @@ class ARPConfig:
     MAX_FILES_PER_TRIGGER: int = 1
     WATERMARK_SECONDS: int = 15
 
-    # Future Kafka
+    # Kafka
     KAFKA_BOOTSTRAP_SERVERS: str = "localhost:9092"
     KAFKA_TOPIC_ARP: str = "network-arp-raw"
+
+    # Threat scoring weights (shared across UI and live scoring)
+    THREAT_WEIGHTS: Dict[str, int] = field(default_factory=lambda: {
+        "scanning": 12,
+        "flood": 25,
+        "reply_mismatch": 18,
+        "mac_flipping": 20,
+        "ip_flipping": 12,
+        "unsolicited": 14,
+        "impersonation": 14,
+        "conflict": 10,
+        "garp": 4,
+    })

@@ -21,6 +21,7 @@ from pyspark.sql.functions import col, count, countDistinct, date_format
 
 # Import our refactored ARP modules
 from config import ARPConfig
+
 from session import create_spark_session
 from data_source import ARPDataSource
 from enrichment import enrich_arp_data
@@ -33,6 +34,8 @@ from detectors import (
     detect_mac_impersonation,
     detect_arp_conflicts,
 )
+
+_cfg = ARPConfig()  # instantiate once
 
 # =============================================================================
 # DARK THEME CSS
@@ -169,17 +172,7 @@ def _dark_layout(fig: go.Figure, title: str, height: int = 320) -> go.Figure:
 
 def build_threat_gauge(data: Dict) -> go.Figure:
     score = 0
-    weights = {
-        "scanning": 12,
-        "flood": 25,
-        "reply_mismatch": 18,
-        "mac_flipping": 20,
-        "ip_flipping": 12,
-        "unsolicited": 14,
-        "impersonation": 14,
-        "conflict": 10,
-        "garp": 4,
-    }
+    weights = _cfg.THREAT_WEIGHTS
     for key, w in weights.items():
         if len(data[key]) > 0:
             score += w

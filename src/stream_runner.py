@@ -7,16 +7,9 @@ from pyspark.sql import SparkSession
 from config import ARPConfig
 from data_source import ARPDataSource
 from enrichment import enrich_arp_data
-from detectors import (
-    detect_arp_scanning,
-    detect_garp_activity,
-    detect_arp_spoofing,
-    detect_request_flood,
-    detect_unsolicited_replies,
-    detect_mac_impersonation,
-    detect_arp_conflicts,
-)
+from detector_registry import STANDARD_DETECTORS, SPOOFING
 from output import OutputManager
+
 
 def run_streaming_analysis(
     spark: SparkSession,
@@ -46,28 +39,17 @@ def run_streaming_analysis(
 
     print("[INFO] Starting detector streams...")
 
-    scanning = detect_arp_scanning(enriched, config)
-    queries.append(output.console_sink(scanning, "ARP-Scanner", "update"))
+    for spec in STANDARD_DETECTORS:
+        df = spec.fn(enriched, config)
+        queries.append(output.console_sink(df, spec.name, spec.output_mode))
 
-    garp = detect_garp_activity(enriched, config)
-    queries.append(output.console_sink(garp, "GARP-Activity", "update"))
-
-    reply_mismatch, mac_flipping, ip_flipping = detect_arp_spoofing(enriched, config)
-    queries.append(output.console_sink(reply_mismatch, "Spoof-ReplyMismatch", "append"))
-    queries.append(output.console_sink(mac_flipping, "Spoof-MACFlip", "update"))
-    queries.append(output.console_sink(ip_flipping, "Spoof-IPFlip", "update"))
-
-    flood = detect_request_flood(enriched, config)
-    queries.append(output.console_sink(flood, "ARP-Flood", "update"))
-
-    unsolicited = detect_unsolicited_replies(enriched, config)
-    queries.append(output.console_sink(unsolicited, "Unsolicited-Reply", "append"))
-
-    impersonation = detect_mac_impersonation(enriched, config)
-    queries.append(output.console_sink(impersonation, "MAC-Impersonation", "update"))
-
-    conflict = detect_arp_conflicts(enriched, config)
-    queries.append(output.console_sink(conflict, "ARP-Conflict", "update"))
+    reply_mismatch, mac_flipping, ip_flipping = SPOOFING.fn(enriched, config)
+    for df, sub_name, mode in zip(
+        (reply_mismatch, mac_flipping, ip_flipping),
+        SPOOFING.sub_names,
+        SPOOFING.output_modes,
+    ):
+        queries.append(output.console_sink(df, f"Spoof-{sub_name.replace(' ', '')}", mode))
 
     print(f"[INFO] Started {len(queries)} streaming queries")
     print("[INFO] Waiting for data... Press Ctrl+C to stop")
