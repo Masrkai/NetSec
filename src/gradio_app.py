@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ARP Sentinel — Dark Gradio Intelligence Dashboard
+NetSec — Dark Gradio Intelligence Dashboard
 =================================================
 A stateless, dark-themed web GUI for the ARP Anomaly Detection system.
 Renders real-time threat gauges, temporal timelines, network charts,
@@ -544,13 +544,13 @@ def build_spoofing_summary(data: Dict) -> go.Figure:
 
 def build_interface() -> gr.Blocks:
     # FIX: Gradio 6.0 — move theme/css to launch(), not Blocks()
-    with gr.Blocks(title="ARP Sentinel") as demo:
+    with gr.Blocks(title="NetSec") as demo:
 
         # Header
         gr.HTML("""
         <div style="text-align:center; padding: 24px 0 8px;">
             <h1 style="margin:0; font-size:2.4rem; font-weight:700; color:#38bdf8; letter-spacing:-0.03em;">
-                ARP Sentinel
+                NetSec
             </h1>
             <p style="margin:6px 0 0; font-size:0.95rem; color:#94a3b8;">
                 Stateless Anomaly Detection & Threat Intelligence Dashboard
